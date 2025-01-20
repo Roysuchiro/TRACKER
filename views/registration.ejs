@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tracker</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: cadetblue;
+  }
+  .regisform {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin-top: 200px;
+    width: 400px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 5px 5px 5px #ccc;
+    border-radius: 20px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .input {
+    width: 300px;
+    height: 30px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  button {
+    width: 200px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  button:hover {
+    cursor: pointer;
+    background-color: #797777;
+  }
+</style>
+<body>
+  <div class="regisform">
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+      <input type="text" name="name" placeholder="Name" required class="input">
+      <input type="email" name="email" placeholder="Email" required class="input">
+      <input type="text" name="phone" placeholder="Phone" required class="input">
+      <input type="password" name="password" placeholder="Password" required class="input">
+      <button type="submit">Register</button>
+      <footer>
+        <a href="/login">Already a User? Login</a>
+      </footer>
+    </form>
+  </div>
+
+  <!-- Display alert messages if they exist -->
+  <% if (message) { %>
+    <script>
+      alert("<%= message %>");
+    </script>
+  <% } %>
+
+  <% if (error) { %>
+    <script>
+      alert("<%= error %>");
+    </script>
+  <% } %>
+</body>
+</html>
+
