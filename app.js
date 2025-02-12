@@ -8,7 +8,8 @@ import searchRouter from './routes/search.js';
 import registrationRoutes from './routes/registration.js';
 import loginRoutes from './routes/login.js';
 import dashboardRoutes from './routes/dashboard.js';
-
+import dotenv from 'dotenv';
+dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -27,11 +28,12 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Database connection
 mongoose
-  .connect('mongodb://127.0.0.1:27017/tracker')
+  .connect(process.env.MONGO_URI)
   .then(() => console.log('Database connected!'))
   .catch((err) => console.error('Database connection error:', err));
 
 // Routes
+app.use('/',registrationRoutes);
 app.use('/register', registrationRoutes);
 app.use('/login', loginRoutes);
 app.use('/dashboard', dashboardRoutes);
@@ -46,5 +48,5 @@ io.on('connection', (socket) => {
 });
 
 // Start the server
-const PORT = 3000;
+const PORT = process.env.PORT
 server.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
